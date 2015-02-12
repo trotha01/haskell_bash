@@ -12,8 +12,6 @@ import Control.Monad
 
 ifElseCat = getArgs >>= \args ->if args == [] then interact id else mapM readFile args >>= mapM_ putStr
 
-maybeCat = getArgs >>= \files -> maybe (interact id) (\_ -> mapM readFile files >>= mapM_ putStr) (listToMaybe files)
-
 -- maybe takes in three arguments
 -- The first is the default value to use (if Maybe is Nothing)
 -- The second is the function to apply to 'a', in Just a
