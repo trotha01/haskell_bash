@@ -10,11 +10,9 @@ import Control.Monad
 -- putStr :: String -> IO ()
 -- listToMaybe :: [a] -> Maybe a
 
-main3 = getArgs >>= \args ->if args == [] then interact id else mapM readFile args >>= mapM_ putStr
+ifElseCat = getArgs >>= \args ->if args == [] then interact id else mapM readFile args >>= mapM_ putStr
 
-main2 = getArgs >>= \files -> maybe (interact id) (\_ -> mapM readFile files >>= mapM_ putStr) (listToMaybe files)
-
-main4 = getArgs >>= \files -> maybe (interact id) (\_ -> mapM_ ((>>= putStr) . readFile) files) (listToMaybe files)
+maybeCat = getArgs >>= \files -> maybe (interact id) (\_ -> mapM readFile files >>= mapM_ putStr) (listToMaybe files)
 
 -- maybe takes in three arguments
 -- The first is the default value to use (if Maybe is Nothing)
