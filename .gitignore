@@ -1,5 +1,7 @@
 *.hi
 *.o
+*.swp
+example.txt
 cat/cat
 head/head
 tail/tail
