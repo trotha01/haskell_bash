@@ -1,3 +1,0 @@
-example text here
-hello world
-line 3
