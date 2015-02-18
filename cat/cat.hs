@@ -53,9 +53,13 @@ ifElseCat = getArgs >>= \args ->if args == [] then interact id else mapM readFil
 
 -- The mapM_ takes the function we composed with '>=>' and applies it to each file
 
+{-
+ - main checks if there is are file command line arguments, if so, it cats the files to stdout
+ -  else, it echos everything back to the user
+-}
 main = getArgs >>= \files ->
-  maybe
-   (interact id)
-   (\_ -> mapM_ (readFile >=> putStr) files)
-   (listToMaybe files)
+  let echo = (interact id)
+      catFile = (\_ -> mapM_ (readFile >=> putStr) files)
+      filesExist = (listToMaybe files)
+  in maybe echo catFile filesExist
 
